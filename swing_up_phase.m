@@ -10,7 +10,7 @@ function [u, traj] = swing_up_phase(goal_state, init_u, dt)
     init_cond = [0;0;0;0];
     %init_u = .5;
 
-    cur_state = init_cond + acrobot_dynamics(init_cond,init_u)*dt;
+    cur_state = init_cond + acrobot_dynamics(init_u,init_cond)*dt;
 
     control = [init_u];
     state = [init_cond, cur_state];
@@ -23,7 +23,7 @@ function [u, traj] = swing_up_phase(goal_state, init_u, dt)
         ubar = dq(1)*delt_e;
         u = -k1*q(2)-k2*dq(2)-k3*ubar;
 
-        cur_state = cur_state + acrobot_dynamics(cur_state,u)*dt;
+        cur_state = cur_state + acrobot_dynamics(u,cur_state)*dt;
         state = [state cur_state];
         control = [control u];
     end

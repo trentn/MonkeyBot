@@ -1,4 +1,4 @@
-function dX = acrobot_dynamics(X,u)
+function dX = acrobot_dynamics(u,X)
         m1 = 1;
         m2 = 1;
 
